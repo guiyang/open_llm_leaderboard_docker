@@ -22,7 +22,7 @@ RUN pip install --default-timeout=5 --retries=9999 --no-cache-dir -r ./open_llm_
 WORKDIR /app/open_llm_leaderboard/
 
 # 修改 app.py 中的一行内容
-RUN sed -i 's/demo.queue(default_concurrency_limit=40).launch()/demo.queue(default_concurrency_limit=40).launch(share=True)/' app.py
+RUN sed -i 's/demo.queue(default_concurrency_limit=40).launch()/demo.queue(default_concurrency_limit=40).launch(share=False, server_name="0.0.0.0")/' app.py
 
 # 默认执行指令
 CMD ["python", "app.py"]
