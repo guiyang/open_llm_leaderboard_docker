@@ -1,6 +1,13 @@
 # 使用官方 Python 镜像
 FROM bitnami/python:3.11.9
 
+ENV HTTP_PROXY="http://10.1.1.18:20171/"
+ENV HTTPS_PROXY="http://10.1.1.18:20171/"
+
+# 输出 HTTP 和 HTTPS 代理信息
+RUN echo "HTTP Proxy: $HTTP_PROXY" && \
+    echo "HTTPS Proxy: $HTTPS_PROXY"
+
 # 安装 MariaDB 客户端开发库和 pkg-config
 RUN install_packages libmariadb-dev pkg-config git-lfs
 
